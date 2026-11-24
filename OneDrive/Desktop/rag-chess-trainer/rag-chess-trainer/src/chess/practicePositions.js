@@ -1,0 +1,8 @@
+export const practicePositions = [
+  { id: 'queen-rook', title: 'Queen + Rook', pieces: '♕ ♖', level: 'START HERE', fen: '8/4k3/8/8/8/3K4/1Q6/6R1 w - - 0 1', description: 'Build a wall. Close the net.', tip: 'Use your queen and rook to cut off ranks, then alternate checks to push the king to the edge.' },
+  { id: 'two-rooks', title: 'Two Rooks', pieces: '♖ ♖', level: 'FOUNDATIONS', fen: '8/4k3/8/8/8/3K4/1R6/6R1 w - - 0 1', description: 'Master the ladder mate.', tip: 'Alternate your rooks along ranks or files. Keep them far enough from the king that neither can be captured.' },
+  { id: 'queen-bishop', title: 'Queen + Bishop', pieces: '♕ ♗', level: 'COORDINATION', fen: '8/4k3/8/8/8/3K4/1Q6/5B2 w - - 0 1', description: 'Let your pieces work together.', tip: 'The queen restricts the king while your bishop guards escape squares. Leave the king a legal move until you can deliver mate.' },
+  { id: 'queen-knight', title: 'Queen + Knight', pieces: '♕ ♘', level: 'COORDINATION', fen: '8/4k3/8/8/8/3K4/1Q6/6N1 w - - 0 1', description: 'Cover the unexpected escape.', tip: 'Use the knight to cover squares the queen cannot. Bring your king closer to support the final mating net.' },
+  { id: 'queen', title: 'Queen', pieces: '♕', level: 'ESSENTIAL', fen: '8/4k3/8/8/8/3K4/1Q6/8 w - - 0 1', description: 'Shrink the box. Bring your king.', tip: 'Restrict the king with your queen, then bring your king in to help. Watch for stalemate when the box gets small.' },
+  { id: 'rook', title: 'Rook', pieces: '♖', level: 'ESSENTIAL', fen: '8/4k3/8/8/8/3K4/1R6/8 w - - 0 1', description: 'Win with patient precision.', tip: 'Cut off the king with your rook and use your own king to gain opposition. Check when it forces the defender closer to the edge.' },
+]

@@ -1,0 +1,2 @@
+import { Link } from 'react-router-dom'
+export default function PracticeCard({ practice }) { return <Link className="practice-card" to={`/practice/${practice.id}`}><div className="card-top"><span className="pieces">{practice.pieces}</span><span className="tag">{practice.level}</span></div><h2>{practice.title} <span>mate</span></h2><p>{practice.description}</p><div className="card-bottom">Practice endgame <span>White to move</span></div></Link> }

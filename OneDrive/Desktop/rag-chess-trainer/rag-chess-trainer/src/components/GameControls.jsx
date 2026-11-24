@@ -1,0 +1,1 @@
+export default function GameControls({ undo, reset, flip, canUndo }) { return <div className="controls"><button onClick={undo} disabled={!canUndo}>↶ Undo</button><button onClick={flip}>⇅ Flip board</button><button onClick={reset}>↻ Restart</button></div> }
