@@ -1,8 +1,8 @@
-# social_media_app
+# Quick Chess For You
 live App :
 🌐 https://raagLibr.github.io/rag-chess-trainer/
 
-Spring Boot–based backend for a social media application supporting user and bot interactions. Provides REST APIs to create posts, add comments, and like posts. Implements real-time virality scoring using Redis atomic operations. Applies concurrency control with limits, cooldowns, and depth restrictions for bot interactions.
+♟️ Endgame Studio — A chess training app built with React, react-chessboard, chess.js, and Stockfish 19 (WASM). Features a full game mode against an AI engine and 6 endgame practice scenarios. Runs 100% client-side with no backend required.
 
 
 <img width="1850" height="856" alt="image" src="https://github.com/user-attachments/assets/4373c69c-2cd7-4804-ad58-416282639380" />
