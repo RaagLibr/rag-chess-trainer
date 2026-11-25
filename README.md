@@ -8,22 +8,132 @@ live App :
 <img width="1850" height="856" alt="image" src="https://github.com/user-attachments/assets/4373c69c-2cd7-4804-ad58-416282639380" />
 
 
+# Endgame Studio
 
-Endgame Studio
-React chess trainer using react-chessboard, chess.js, Stockfish 19 Lite (single-threaded WebAssembly), and React Router.
-Run
+A React chess trainer. Play a full game against Stockfish, or practice six classic checkmate endgames, all in the browser with no backend and no account.
+
+Built with **react-chessboard**, **chess.js**, **Stockfish 19 Lite** (single-threaded WebAssembly) and **React Router**.
+
+---
+
+## Table of Contents
+
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Getting Started](#getting-started)
+- [Available Scripts](#available-scripts)
+- [Routes](#routes)
+- [How to Play](#how-to-play)
+- [Practice Endgames](#practice-endgames)
+- [Project Structure](#project-structure)
+- [Deployment](#deployment)
+- [Engine Distribution and License](#engine-distribution-and-license)
+
+---
+
+## Features
+
+- Full game as White against Stockfish, with adjustable skill level
+- Six checkmate practice drills, each with the named White material and both kings
+- Drag-and-drop or click-to-move, with legal targets and the last move highlighted
+- Pawn promotion to queen, rook, bishop or knight
+- Undo, flip board and restart controls
+- Runs entirely client-side: no backend, no account required
+- Games are kept in memory and reset on navigation or reload
+
+## Tech Stack
+
+| Area | Technology |
+|---|---|
+| UI | React, React Router |
+| Build tool | Vite |
+| Chess rules | chess.js |
+| Board | react-chessboard |
+| Engine | Stockfish 19 Lite (single-threaded WebAssembly, in a Web Worker) |
+| Fonts | Google Fonts, with local sans-serif fallbacks |
+
+## Getting Started
+
 ```sh
 npm install
 npm run dev
 ```
-`npm run build` creates `dist/`; `npm run preview` serves the production build. The predev/prebuild script copies the installed Stockfish worker, WASM, and GPL license into `public/stockfish`. Static hosting must rewrite application routes to `index.html` and serve WASM as `application/wasm`.
-Routes
-`/`: home
-`/play`: full chess game as White against Stockfish, with adjustable skill
-`/practice`: six endgame cards
-`/practice/queen-rook`, `/practice/two-rooks`, `/practice/queen-bishop`, `/practice/queen-knight`, `/practice/queen`, `/practice/rook`
-Drag pieces or click source and destination. Legal targets and the last move are highlighted. Pawn promotion supports queen, rook, bishop, and knight. Undo returns to your previous turn; restart resets the initial position. Flipping changes board orientation, not the player's color. Each practice includes both kings and the named White material. Stockfish defends at maximum skill with a 700 ms search budget; it is not a perfect endgame tablebase.
-Games are kept in memory and reset on navigation/reload. No backend or account is required. Fonts use Google Fonts with local sans-serif fallbacks.
-Engine distribution
-Stockfish is GPL-3.0 software. Its copied license is served at `/stockfish/COPYING.txt`. The exact unmodified engine package used here is `stockfish@19.0.1`; corresponding source and build instructions are at https://github.com/nmrugg/stockfish.js/tree/v19.0.1. Preserve the license and comply with GPL source distribution obligations when redistributing the engine.
 
+Then open the local URL printed in the terminal.
+
+## Available Scripts
+
+| Command | Description |
+|---|---|
+| `npm run dev` | Start the development server |
+| `npm run build` | Create a production build in `dist/` |
+| `npm run preview` | Serve the production build locally |
+| `npm run lint` | Run ESLint |
+| `npm test` | Run the automated tests |
+
+The `predev` and `prebuild` scripts copy the installed Stockfish worker, WASM file and GPL license into `public/stockfish`.
+
+## Routes
+
+| Route | Description |
+|---|---|
+| `/` | Home |
+| `/play` | Full chess game as White against Stockfish, with adjustable skill |
+| `/practice` | Six endgame cards |
+| `/practice/queen-rook` | Queen + Rook checkmate |
+| `/practice/two-rooks` | Two Rooks checkmate |
+| `/practice/queen-bishop` | Queen + Bishop checkmate |
+| `/practice/queen-knight` | Queen + Knight checkmate |
+| `/practice/queen` | Queen checkmate |
+| `/practice/rook` | Rook checkmate |
+
+## How to Play
+
+- **Move a piece:** drag it, or click the source square and then the destination.
+- **Highlights:** legal targets and the last move are highlighted.
+- **Promotion:** choose queen, rook, bishop or knight.
+- **Undo:** returns to your previous turn.
+- **Restart:** resets the initial position.
+- **Flip:** changes the board orientation only, not your color. You always play White.
+
+## Practice Endgames
+
+Each practice position includes both kings and the named White material. Stockfish defends at maximum skill with a 700 ms search budget.
+
+> **Note:** Stockfish is not a perfect endgame tablebase, so its defense may not always be optimal.
+
+## Project Structure
+
+```
+src/
+  App.jsx, main.jsx          Router, header and footer
+  pages/                     Home, Play, Practice, PracticeGame
+  components/                ChessBoard, GameControls, MoveHistory, PracticeCard
+  hooks/
+    useChessGame.js          Game state, moves, undo, reset, engine replies
+    useStockfish.js          Runs the engine for each position it must answer
+  chess/
+    StockfishEngine.js       Web Worker wrapper using UCI
+    practicePositions.js     The six practice FEN positions and tips
+    chessUtils.js            Game-status helper
+scripts/
+  copy-stockfish.mjs         Copies Stockfish files into public/stockfish
+tests/
+  chess.test.js              Automated tests
+```
+
+## Deployment
+
+Endgame Studio is a static site. Your host must:
+
+1. **Rewrite application routes to `index.html`**, so direct visits to `/play` or `/practice/...` work.
+2. **Serve `.wasm` files as `application/wasm`.**
+
+## Engine Distribution and License
+
+Stockfish is **GPL-3.0** software. Its license is copied during the build and served at `/stockfish/COPYING.txt`.
+
+- **Engine package:** `stockfish@19.0.1` (unmodified)
+- **Source and build instructions:** https://github.com/nmrugg/stockfish.js/tree/v19.0.1
+
+When redistributing the engine, preserve the license and comply with the GPL source distribution obligations.
